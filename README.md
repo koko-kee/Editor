@@ -19,7 +19,6 @@ Juste un simple editeur qui correspond a mes besoins, je suis débutant en js ma
         <!--<div id="preview"></div>-->
     </div>
     <button name="topics" type="submit" class="btn btn-danger mt-2 float-end">Envoyez <i class="fas fa-paper-plane"></i></button>
-    <input type="checkbox" name="sticky" value="1"> Sticky <small style="color:#912c1a;">(Personne ne pourra répondre a par les admin) </small>
 </div>
 ```
 ![Capture d'écran 2023-04-15 170434](https://user-images.githubusercontent.com/8920228/232232927-6aef6da4-2099-47d6-88b8-51dbcde9488d.png)
