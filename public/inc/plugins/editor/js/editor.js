@@ -1,3 +1,4 @@
+
 function insertText(openTag, closeTag) {
     var textarea = document.getElementById('editor');
     var start = textarea.selectionStart;
@@ -8,30 +9,43 @@ function insertText(openTag, closeTag) {
     textarea.selectionStart = start + openTag.length;
     textarea.selectionEnd = end + openTag.length;
     textarea.focus();
-    preview();
 }
 
-function preview() {
-    var preview = document.getElementById('preview');
-    var converter = new showdown.Converter();
-    var markdownText = document.getElementById('editor').value;
-    var htmlText = converter.makeHtml(markdownText);
-    preview.innerHTML = htmlText;
+function addLink() {
+    var linkText = prompt("Entrez le texte du lien :");
+    if (linkText) {
+      var linkUrl = prompt("Entrez l'URL du lien :");
+      if (linkUrl) {
+        var linkMarkdown = "[" + linkText + "](" + linkUrl + ")";
+        var textarea = document.getElementById('my-textarea');
+        var startPos = textarea.selectionStart;
+        var endPos = textarea.selectionEnd;
+        textarea.value = textarea.value.substring(0, startPos) + linkMarkdown + textarea.value.substring(endPos, textarea.value.length);
+        textarea.selectionStart = startPos + linkMarkdown.length;
+        textarea.selectionEnd = startPos + linkMarkdown.length;
+        textarea.focus();
+      }
+    }
 }
 
+$(document).ready(function() {
+  var $textarea = $('#editor');
+  var $wrapper = $('.editor');
+  var $handle = $('#grip');
 
-// Fonction pour mettre à jour l'aperçu
-function updatePreview() {
-    const editor = document.getElementById('editor');
-    const preview = document.getElementById('preview');
-    const content = editor.innerHTML;
-    const html = marked(content);
-    preview.innerHTML = html;
-}
+  $handle.on('mousedown', function(event) {
+    event.preventDefault();
+    $(document).on('mousemove', resizeTextarea);
+    $(document).on('mouseup', stopResizeTextarea);
+  });
 
-// Ajout d'un écouteur d'événement pour détecter les changements dans l'éditeur
-const editor = document.getElementById('editor');
-editor.addEventListener('input', updatePreview);
+  function resizeTextarea(event) {
+    $textarea.css('height', event.pageY - $wrapper.offset().top);
+    $wrapper.css('height', event.pageY - $wrapper.offset().top + $handle.height());
+  }
 
-// Initialisation de l'aperçu
-updatePreview();
+  function stopResizeTextarea() {
+    $(document).off('mousemove', resizeTextarea);
+    $(document).off('mouseup', stopResizeTextarea);
+  }
+});
