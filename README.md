@@ -1,4 +1,5 @@
-# Editor
+# Editor using style bootstrap 5 jquery 3.6.4
+
 editeur markdown light perso 
 
 Juste un simple editeur qui correspond a mes besoins, je suis débutant en js mais ça fonctionne, on continuear a amélioré ça.
@@ -15,4 +16,3 @@ Juste un simple editeur qui correspond a mes besoins, je suis débutant en js ma
 </div>
 ```
 ![Capture d'écran 2023-04-17 194950](https://user-images.githubusercontent.com/8920228/232568568-15d6e070-b86b-4137-b07b-eb1c84543215.png)
-
