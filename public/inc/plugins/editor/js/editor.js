@@ -39,8 +39,11 @@ $(document).ready(function() {
   });
 
   function resizeTextarea(event) {
-    $textarea.css('height', event.pageY - $wrapper.offset().top);
-    $wrapper.css('height', event.pageY - $wrapper.offset().top + $handle.height());
+    var newHeight = event.pageY - $wrapper.offset().top;
+    if (newHeight >= 200) {
+      $textarea.css('height', '100%');
+      $wrapper.css('height', newHeight + $handle.height());
+    }
   }
 
   function stopResizeTextarea() {
