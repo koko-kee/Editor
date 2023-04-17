@@ -1,8 +1,4 @@
-.editor > textarea:focus {  
-    border-color: none ;
-    box-shadow: unset;
-    outline: 0 none;
-}
+
 
 #grip {
     width: 100%;
@@ -16,13 +12,19 @@
 }
 
 /* editor */
-.editor {
+#textarea-wrapper {
     height: 300px;
     width: 100%;
     border-left: 2px solid black;
     border-right: 2px solid black;
     padding: 5px;
     position: relative;
+}
+
+#textarea-wrapper > textarea:focus {  
+    border-color: none ;
+    box-shadow: unset;
+    outline: 0 none;
 }
 
 #editor {
@@ -37,7 +39,7 @@
     resize: none;
 }
 
-.toolbar {
+#toolbar {
     background-color: grey;
     padding:10px;
     border: 2px solid black;
