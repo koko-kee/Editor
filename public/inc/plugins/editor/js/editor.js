@@ -1,4 +1,3 @@
-
 function insertText(openTag, closeTag) {
     var textarea = document.getElementById('editor');
     var start = textarea.selectionStart;
@@ -12,25 +11,25 @@ function insertText(openTag, closeTag) {
 }
 
 function addLink() {
-    var linkText = prompt("Entrez le texte du lien :");
-    if (linkText) {
-      var linkUrl = prompt("Entrez l'URL du lien :");
-      if (linkUrl) {
-        var linkMarkdown = "[" + linkText + "](" + linkUrl + ")";
-        var textarea = document.getElementById('my-textarea');
-        var startPos = textarea.selectionStart;
-        var endPos = textarea.selectionEnd;
-        textarea.value = textarea.value.substring(0, startPos) + linkMarkdown + textarea.value.substring(endPos, textarea.value.length);
-        textarea.selectionStart = startPos + linkMarkdown.length;
-        textarea.selectionEnd = startPos + linkMarkdown.length;
-        textarea.focus();
-      }
+  var linkText = prompt("Entrez le texte du lien :");
+  if (linkText) {
+    var linkUrl = prompt("Entrez l'URL du lien :");
+    if (linkUrl) {
+      var linkMarkdown = "[" + linkText + "](" + linkUrl + ")";
+      var textarea = document.getElementById('editor');
+      var startPos = textarea.selectionStart;
+      var endPos = textarea.selectionEnd;
+      textarea.value = textarea.value.substring(0, startPos) + linkMarkdown + textarea.value.substring(endPos, textarea.value.length);
+      textarea.selectionStart = startPos + linkMarkdown.length;
+      textarea.selectionEnd = startPos + linkMarkdown.length;
+      textarea.focus();
     }
+  }
 }
 
 $(document).ready(function() {
   var $textarea = $('#editor');
-  var $wrapper = $('.editor');
+  var $wrapper = $('#textarea-wrapper');
   var $handle = $('#grip');
 
   $handle.on('mousedown', function(event) {
