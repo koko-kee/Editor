@@ -1,33 +1,42 @@
 $(function() {
   var toolbar = '<div class="btn-group" role="group" aria-label="Button group with nested dropdown">'
-               + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'**\', \'**\')" title="Gras"><i class="fas fa-bold"></i></button>'
-               + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'_\', \'_\')" title="Italic"><i class="fas fa-italic"></i></button>'
-               + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'\\n>&nbsp;\', \'\\n\')" title="Quote"><i class="fas fa-quote-right"></i></button>'
-               + '<button class="btn btn-sm btn-secondary" type="button" onclick="addLink()" title="InsertLink"><i class="fas fa-link"></i></button>'
-               + '</div>&nbsp;'
+                + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'**\', \'**\')" title="Gras"><i class="fas fa-bold"></i></button>'
+                + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'*\', \'*\')" title="Italic"><i class="fas fa-italic"></i></button>'
+                
+                + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'~~\', \'~~\')" title="strike"><i class="fas fa-strikethrough"></i></button>'
+                + '<button class="btn btn-sm btn-secondary" type="button" onclick="addLink()" title="InsertLink"><i class="fas fa-link"></i></button>'
+                + '</div>&nbsp;'
 
-               + '<div class="btn-group" role="group" aria-label="Button group with nested dropdown">'
-               + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'\\n```php\\n\', \'\\n```\\n\')" title="BlocCode"><i class="fas fa-code"></i></button>'
-               + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'`\', \'`\')" title="InlineCode"><i class="fas fa-terminal"></i></button>'
-               + '</div>&nbsp;'
-
-               + '<button class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">'
-               + '<i class="fas fa-smile"></i>'
-               + '</button>'
-               + '<div class="dropdown-menu" style="padding:5px 5px 1px 5px;">'
+                + '<div class="btn-group" role="group" aria-label="Button group with nested dropdown">'
+                + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'\\n>&nbsp;\', \'\\n\')" title="Quote"><i class="fas fa-quote-right"></i></button>'
+                + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'\\n```php\\n\', \'\\n```\\n\')" title="BlocCode"><i class="fas fa-code"></i></button>'
+                + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'`\', \'`\')" title="InlineCode"><i class="fas fa-terminal"></i></button>'
+                + '</div>&nbsp;'
+                
+                + '<button class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">'/*smiley btn dropdown start */
+                + '<i class="fas fa-smile"></i>'
+                + '</button>'/* smiley btn dropdown stop */
+                
+                + '<div class="dropdown-menu" style="padding:5px 5px 1px 5px;">'//dropdown
                 + '<div class="line1 mb-1">'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'😂\', \'\')" title="InsertLink">😂</button>'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'😁\', \'\')" title="InsertLink">😁</button>'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'😏\', \'\')" title="InsertLink">😏</button>'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'😉\', \'\')" title="InsertLink">😉</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😂\', \'\')">😂</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😁\', \'\')">😁</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😏\', \'\')">😏</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😉\', \'\')">😉</button>'
                 + '</div>'
                 + '<div class="line2 mb-1">'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'😎\', \'\')" title="InsertLink">😎</button>'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'😮\', \'\')" title="InsertLink">😮</button>'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'🤔\', \'\')" title="InsertLink">🤔</button>'
-                  + '<button class="btn btn-sm" type="button" onclick="insertText(\'🫡\', \'\')" title="InsertLink">🫡</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😎\', \'\')">😎</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😮\', \'\')">😮</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'🤔\', \'\')">🤔</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'🫡\', \'\')">🫡</button>'
                 + '</div>'
-               + '</div>';
+                + '<div class="line3 mb-1">'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😌\', \'\')">😌</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😛\', \'\')">😛</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'🤤\', \'\')">🤤</button>'
+                + '<button class="btn btn-sm" type="button" onclick="insertText(\'😓\', \'\')">😓</button>'
+                + '</div>'
+                + '</div>';//dropdown end
   $('#toolbar').html(toolbar);
 });
 
