@@ -1,6 +1,6 @@
 /* editor */
 #textarea-wrapper {
-    height: 300px;
+    height: 200px;
     width: 100%;
     border-left: 2px solid black;
     border-right: 2px solid black;
@@ -8,13 +8,13 @@
     position: relative;
 }
 
-#textarea-wrapper > textarea:focus {  
+#textarea-wrapper > textarea:focus {
     border-color: none ;
     box-shadow: unset;
     outline: 0 none;
 }
 
-#editor {
+#textarea-wrapper > textarea{
     padding: 10px;
     border: none;
     font-family: Arial, sans-serif;
@@ -45,6 +45,11 @@
     border: 2px solid black;
     border-top-left-radius: 0.3em;
     border-top-right-radius: 0.3em;
+}
+
+#counter{
+    float:right;
+    line-height: 30px;
 }
 
 #preview {
