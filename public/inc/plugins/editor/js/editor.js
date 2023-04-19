@@ -1,5 +1,5 @@
 $(function() {
-  var toolbar = '<div class="btn-group" role="group" aria-label="Button group with nested dropdown">'
+  var toolbar = '<div class="btn-group" role="group">'
                 + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'**\', \'**\')" title="Gras"><i class="fas fa-bold"></i></button>'
                 + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'*\', \'*\')" title="Italic"><i class="fas fa-italic"></i></button>'
                 
@@ -7,7 +7,7 @@ $(function() {
                 + '<button class="btn btn-sm btn-secondary" type="button" onclick="addLink()" title="InsertLink"><i class="fas fa-link"></i></button>'
                 + '</div>&nbsp;'
 
-                + '<div class="btn-group" role="group" aria-label="Button group with nested dropdown">'
+                + '<div class="btn-group" role="group">'
                 + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'\\n>&nbsp;\', \'\\n\')" title="Quote"><i class="fas fa-quote-right"></i></button>'
                 + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'\\n```php\\n\', \'\\n```\\n\')" title="BlocCode"><i class="fas fa-code"></i></button>'
                 + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'`\', \'`\')" title="InlineCode"><i class="fas fa-terminal"></i></button>'
@@ -36,7 +36,8 @@ $(function() {
                 + '<button class="btn btn-sm" type="button" onclick="insertText(\'🤤\', \'\')">🤤</button>'
                 + '<button class="btn btn-sm" type="button" onclick="insertText(\'😓\', \'\')">😓</button>'
                 + '</div>'
-                + '</div>';//dropdown end
+                + '</div>'//dropdown end
+                + '<div id="counter"><span>0</span> caractères</div>';
   $('#toolbar').html(toolbar);
 });
 
@@ -88,5 +89,27 @@ $(document).ready(function() {
     event.preventDefault();
     $(document).on('mousemove', resizeTextarea);
     $(document).on('mouseup', stopResizeTextarea);
+  });
+});
+
+//compte le nombres de caractère du textarea
+$(document).ready(function(){
+  function updateCounter() {
+    var cnt = $("#counter > span");
+    var txt = $("textarea").val();
+    var len = txt.length;
+    
+    // check if user has less than 20 chars left
+    if (len <= 20) {
+      $(cnt).addClass("warning");
+    } else {
+      $(cnt).removeClass("warning");
+    }
+    
+    $(cnt).text(len);
+  }
+
+  $('textarea').on('input', function() {
+    updateCounter();
   });
 });
