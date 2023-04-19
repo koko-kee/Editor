@@ -1,4 +1,4 @@
-# Editor using style bootstrap 5 jquery 3.6.4
+# Editor using style bootstrap 5
 
 editeur markdown light perso 
 
