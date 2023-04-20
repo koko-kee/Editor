@@ -5,12 +5,9 @@ editeur markdown light perso
 Juste un simple editeur qui correspond a mes besoins, je suis débutant en js mais ça fonctionne, on continuear a amélioré ça.
 
 ```html
-<div id="editor-area">
-    <div id="toolbar"> generate with editor.js </div>
-    <div id="textarea-wrapper">
-        <textarea id="editor" name="f_topic_content"></textarea>
-    </div>
-    <div id="grip" draggable="true"><i class="fas fa-grip-horizontal"></i></div>
-</div>
+
+<textarea id="editor" class="textarea" name="field"></textarea>
+
 ```
-![Capture d'écran 2023-04-17 194950](https://user-images.githubusercontent.com/8920228/232568568-15d6e070-b86b-4137-b07b-eb1c84543215.png)
+
+![Capture d'écran 2023-04-20 023719](https://user-images.githubusercontent.com/8920228/233228076-990c9ef0-23c8-469c-bab6-9b1c97489936.png)
