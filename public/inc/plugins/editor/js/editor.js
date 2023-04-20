@@ -1,3 +1,66 @@
+/* cette partie gere l'entré du markdown dans le textarea en cliquand sur un bouton donner */
+function insertText(openTag, closeTag) {
+  var textarea = document.getElementById('editor');
+  var start = textarea.selectionStart;
+  var end = textarea.selectionEnd;
+  var selectedText = textarea.value.substring(start, end);
+  var replacement = openTag + selectedText + closeTag;
+  textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+  textarea.selectionStart = start + openTag.length;
+  textarea.selectionEnd = end + openTag.length;
+  textarea.focus();
+}
+
+function addLink() {
+  var linkText = prompt("Entrez le texte du lien :");
+  if (linkText) {
+    var linkUrl = prompt("Entrez l'URL du lien :");
+    if (linkUrl) {
+      var linkMarkdown = "[" + linkText + "](" + linkUrl + ")";
+      insertText(linkMarkdown, "");
+    }
+  }
+}
+
+function resizeTextarea(event) {
+  var $textarea = $('textarea');
+  var $handle = $('#grip');
+  var newHeight = event.pageY - $textarea.offset().top;
+  if (newHeight >= 200) { //on ne peut pas descendre en dessous de cette taille
+    $textarea.css('height', 'calc(' + newHeight + 'px - ' + $handle.height() + 'px)');
+  }
+}
+
+function stopResizeTextarea() {
+  $(document).off('mousemove', resizeTextarea);
+  $(document).off('mouseup', stopResizeTextarea);
+}
+
+$(document).ready(function() {
+  var $handle = $('#grip');
+
+  $handle.on('mousedown', function(event) {
+    event.preventDefault();
+    $(document).on('mousemove', resizeTextarea);
+    $(document).on('mouseup', stopResizeTextarea);
+  });
+});
+
+//compte le nombres de caractère du textarea
+$(document).ready(function(){
+  function updateCounter() {
+    var cnt = $("#counter > span");
+    var txt = $("textarea").val();
+    var len = txt.length;
+    
+    $(cnt).text(len);
+  }
+
+  $('textarea').on('input', function() {
+    updateCounter();
+  });
+});
+
 $(function() {
   var toolbar = '<div class="btn-group" role="group">'
                 + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'**\', \'**\')" title="Gras"><i class="fas fa-bold"></i></button>'
@@ -41,75 +104,21 @@ $(function() {
   $('#toolbar').html(toolbar);
 });
 
+window.onload = function() {
+  // récupérer l'élément textarea
+  var editor = document.getElementById("editor");
 
-/* cette partie gere l'entré du markdown dans le textarea en cliquand sur un bouton donner */
-function insertText(openTag, closeTag) {
-  var textarea = document.getElementById('editor');
-  var start = textarea.selectionStart;
-  var end = textarea.selectionEnd;
-  var selectedText = textarea.value.substring(start, end);
-  var replacement = openTag + selectedText + closeTag;
-  textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
-  textarea.selectionStart = start + openTag.length;
-  textarea.selectionEnd = end + openTag.length;
-  textarea.focus();
-}
+  // créer un nouvel élément div pour la toolbar
+  var toolbar = document.createElement("div");
+  toolbar.setAttribute("id", "toolbar");
 
-function addLink() {
-  var linkText = prompt("Entrez le texte du lien :");
-  if (linkText) {
-    var linkUrl = prompt("Entrez l'URL du lien :");
-    if (linkUrl) {
-      var linkMarkdown = "[" + linkText + "](" + linkUrl + ")";
-      insertText(linkMarkdown, "");
-    }
-  }
-}
+  // créer un nouvel élément div pour le grip
+  var grip = document.createElement("div");
+  grip.setAttribute("id", "grip");
 
-function resizeTextarea(event) {
-  var $textarea = $('textarea');
-  var $wrapper = $('#textarea-wrapper');
-  var $handle = $('#grip');
-  var newHeight = event.pageY - $wrapper.offset().top;
-  if (newHeight >= 200) { //on ne peut pas descendre en dessous de cette taille
-    $textarea.css('height', '100%');
-    $wrapper.css('height', newHeight + $handle.height());
-  }
-}
+  // insérer la nouvelle div toolbar avant l'élément textarea
+  editor.parentNode.insertBefore(toolbar, editor);
 
-function stopResizeTextarea() {
-  $(document).off('mousemove', resizeTextarea);
-  $(document).off('mouseup', stopResizeTextarea);
-}
-
-$(document).ready(function() {
-  var $handle = $('#grip');
-
-  $handle.on('mousedown', function(event) {
-    event.preventDefault();
-    $(document).on('mousemove', resizeTextarea);
-    $(document).on('mouseup', stopResizeTextarea);
-  });
-});
-
-//compte le nombres de caractère du textarea
-$(document).ready(function(){
-  function updateCounter() {
-    var cnt = $("#counter > span");
-    var txt = $("textarea").val();
-    var len = txt.length;
-    
-    // check if user has less than 20 chars left
-    if (len <= 20) {
-      $(cnt).addClass("warning");
-    } else {
-      $(cnt).removeClass("warning");
-    }
-    
-    $(cnt).text(len);
-  }
-
-  $('textarea').on('input', function() {
-    updateCounter();
-  });
-});
+  // insérer la nouvelle div grip après l'élément textarea
+  editor.parentNode.insertBefore(grip, editor.nextSibling);
+};
