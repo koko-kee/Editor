@@ -104,6 +104,7 @@ $(function() {
   $('#toolbar').html(toolbar);
 });
 
+//code qu va créer généré la div toolbar < textarea > grip dans cette ordre
 window.onload = function() {
   // récupérer l'élément textarea
   var editor = document.getElementById("editor");
@@ -111,14 +112,20 @@ window.onload = function() {
   // créer un nouvel élément div pour la toolbar
   var toolbar = document.createElement("div");
   toolbar.setAttribute("id", "toolbar");
+  toolbar.setAttribute("class", "toolbar-style");
 
   // créer un nouvel élément div pour le grip
   var grip = document.createElement("div");
   grip.setAttribute("id", "grip");
+  grip.setAttribute("class", "grip-style");
 
   // insérer la nouvelle div toolbar avant l'élément textarea
-  editor.parentNode.insertBefore(toolbar, editor);
+  if(editor != null){
+    editor.parentNode.insertBefore(toolbar, editor);
+  }
 
-  // insérer la nouvelle div grip après l'élément textarea
-  editor.parentNode.insertBefore(grip, editor.nextSibling);
+  if(editor != null){
+    // insérer la nouvelle div grip après l'élément textarea
+    editor.parentNode.insertBefore(grip, editor.nextSibling);
+  }
 };
