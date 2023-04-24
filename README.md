@@ -2,7 +2,7 @@
 
 editeur markdown light perso 
 
-Juste un simple editeur qui correspond a mes besoins, je suis débutant en js mais ça fonctionne, on continuear a amélioré ça.
+Juste un simple editeur qui correspond a mes besoins, je suis débutant en js mais ça fonctionne, on va continuer a amélioré ça.
 
 ```html
 
