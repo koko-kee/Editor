@@ -61,9 +61,6 @@ function updateCounter(ideditor, idcounter) {
   });
 }
 
-$(document).ready(function(){
-});
-
 function addToolbar(idtoolbar){
       var toolbar = '<div class="btn-group" role="group">'
       + '<button class="btn btn-sm btn-secondary" type="button" onclick="insertText(\'**\', \'**\')" title="Gras"><i class="fas fa-bold"></i></button>'
@@ -123,18 +120,17 @@ function setupTogglePreview(idpreview) {
   toggleButton.addEventListener("click", togglePreview);
 }
 
-//code qu va créer généré la div toolbar < textarea > preview dans cette ordre
-window.onload = function() {
+function addEditor(idEditor, idToolbar, idPreview) {
   // récupérer l'élément textarea
-  var editor = document.getElementById("editor");
+  var editor = document.getElementById(idEditor);
 
   // créer un nouvel élément div pour la toolbar
   var toolbar = document.createElement("div");
-  toolbar.setAttribute("id", "toolbar");
+  toolbar.setAttribute("id", idToolbar);
   toolbar.setAttribute("class", "toolbar-style");
 
   var preview = document.createElement("div");
-  preview.setAttribute("id", "preview");
+  preview.setAttribute("id", idPreview);
   preview.setAttribute("class", "preview-style");
 
   // insérer la nouvelle div toolbar avant l'élément textarea
@@ -149,7 +145,9 @@ window.onload = function() {
   addToolbar('#toolbar');
   setupTogglePreview('preview');
   updateCounter("editor", "#counter");
-};
+}
+
+addEditor("editor", "toolbar", "preview");
 
 //preview marked
 $(document).ready(function(){
